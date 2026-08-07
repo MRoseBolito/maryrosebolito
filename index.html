@@ -1,844 +1,429 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rose Dev | Web Developer Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
-        
-        .project-card {
-            transition: all 0.3s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .skill-pill {
-            transition: all 0.2s ease;
-        }
-        
-        .skill-pill:hover {
-            transform: scale(1.05);
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
-        }
-        
-        .text-gradient {
-            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .nav-link {
-            position: relative;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .animate-float {
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .dark-section {
-            background-color: #111827;
-            color: white;
-        }
-
-        .light-section {
-            background-color: #f9fafb;
-            color: #1f2937;
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-left: 28px;
-            margin-bottom: 24px;
-        }
-
-        .timeline-item:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 2px;
-            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
-        }
-
-        .timeline-item:after {
-            content: '';
-            position: absolute;
-            left: -6px;
-            top: 0;
-            height: 14px;
-            width: 14px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
-        }
-
-        .scroll-indicator {
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mary Rose Bolito — Web Developer | CMS &amp; Ecommerce Solutions Specialist</title>
+<meta name="description" content="Mary Rose P. Bolito — Web Developer specializing in CMS and ecommerce solutions. 8 years building WordPress, Shopify, Webflow and custom web platforms." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
 </head>
-<body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white bg-opacity-90 backdrop-blur-sm shadow-sm z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold text-gradient">Rose Dev</a>
-            
-            <div class="hidden md:flex space-x-8">
-                <a href="#home" class="nav-link font-medium text-gray-700 hover:text-indigo-600 transition">Home</a>
-                <a href="#about" class="nav-link font-medium text-gray-700 hover:text-indigo-600 transition">About</a>
-                <a href="#skills" class="nav-link font-medium text-gray-700 hover:text-indigo-600 transition">Skills</a>
-                <a href="#projects" class="nav-link font-medium text-gray-700 hover:text-indigo-600 transition">Projects</a>
-                <a href="#contact" class="nav-link font-medium text-gray-700 hover:text-indigo-600 transition">Contact</a>
-            </div>
-            
-            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-md">
-            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
-                <a href="#home" class="font-medium text-gray-700 hover:text-indigo-600 transition">Home</a>
-                <a href="#about" class="font-medium text-gray-700 hover:text-indigo-600 transition">About</a>
-                <a href="#skills" class="font-medium text-gray-700 hover:text-indigo-600 transition">Skills</a>
-                <a href="#projects" class="font-medium text-gray-700 hover:text-indigo-600 transition">Projects</a>
-                <a href="#contact" class="font-medium text-gray-700 hover:text-indigo-600 transition">Contact</a>
-            </div>
-        </div>
+<body>
+
+<div class="bg-glow" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header class="nav" id="top">
+  <div class="nav-inner">
+    <a href="#top" class="brand">Rose<span>.dev</span></a>
+    <nav class="nav-links" id="navLinks"> 
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="assets/Mary_Rose_Bolito_Resume.pdf" class="nav-resume" download>Résumé ↓</a>
     </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="dark-section min-h-screen flex items-center pt-16">
-        <div class="container mx-auto px-4 py-16 md:py-32">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-                        Hi, I'm <span class="text-gradient">Rose</span>
-                    </h1>
-                    <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-300">
-                        CMS & Ecommerce Solutions Specialist
-                        
-                    </h2>
-                    <p class="text-lg text-gray-300 mb-8 max-w-lg"> 
-                        8 years turning business requirements into fast, reliable, user‑friendly websites — from WordPress and Shopify builds to custom ecommerce and booking platforms. I build it, launch it, and keep it running.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#projects" class="gradient-bg text-white px-6 py-3 rounded-full font-medium hover:opacity-90 transition">
-                            View My Work
-                        </a>
-                        <a href="#contact" class="bg-transparent border-2 border-indigo-500 text-indigo-400 px-6 py-3 rounded-full font-medium hover:bg-indigo-500 hover:bg-opacity-10 transition">
-                            Contact Me
-                        </a>
-                    </div>
-                </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <div class="relative">
-                        <div class="w-64 h-64 md:w-80 md:h-80 overflow-hidden "> 
-                            <img class="w-full h-full object-cover"  src="https://raw.githubusercontent.com/MRoseBolito/my-portfolio/main/rose-bolito.png" alt="Mary Rose Bolito" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
-                <a href="#about" class="text-gray-400 hover:text-white transition">
-                    <i class="fas fa-chevron-down text-2xl"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="light-section py-20">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
-                <div class="w-24 h-1 gradient-bg mx-auto rounded-full"></div>
-            </div>
-            
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/2">
-                    <div class="bg-white p-6 rounded-xl shadow-lg">
-                        <p class="text-lg mb-6">
-                            I’m a passionate and detail-oriented Web Developer with hands-on experience in building user-friendly, efficient digital solutions. While my foundation is in both frontend and backend development, I also bring my skills, tools, and mindset into roles that support operations, administration, and project management.  
-                        </p>
-                        <p class="text-lg mb-6">
-                           With a strong eye for structure, process, and user experience, I thrive not only in writing code but also in organizing tasks, supporting teams, and helping businesses run smoothly behind the scenes. From managing digital tools to streamlining workflows, I aim to be a reliable, multi-skilled partner for clients who need both tech support and dependable day-to-day assistance.
-                        </p>
-                        <p class="text-lg">
-                            Whether you need a polished website or someone to help keep your projects on track, I’m here to help! Bridging the gap between development and support with precision, flexibility, and a can-do mindset.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="md:w-1/2">
-                    <h3 class="text-2xl font-semibold mb-6">My Journey</h3>
-                    
-                    <div class="space-y-6">
-                        <div class="timeline-item">
-                            <h4 class="text-xl font-medium text-indigo-600">2024 - 2025</h4>
-                            <p class="text-lg font-medium">Web & Software Developer | Business Developement & Operations Supervisor at Apekop Travel</p>
-                            <p class="text-gray-600">Managed web and software development, operations, and executive support to streamline business processes. Oversaw daily operations, team performance, and client-partner communications. Provided technical support, led digital marketing initiatives, and supported administrative and project management functions to drive productivity and growth.</p>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <h4 class="text-xl font-medium text-indigo-600">2018 - 2024</h4>
-                            <p class="text-lg font-medium">Web & Software Developer at Incramind Development Inc.</p>
-                            <p class="text-gray-600">Developed, maintained, and optimized the company’s eCommerce platform and client web applications. Ensured system stability through testing, debugging, and deployment while providing technical support to clients. Collaborated with cross-functional teams to deliver high-quality, user-focused solutions, maintaining code quality and adherence to best practices.</p>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <h4 class="text-xl font-medium text-indigo-600">2019 - 2021</h4>
-                            <p class="text-lg font-medium">Web Developer on Freelancer Teams</p>
-                            <p class="text-gray-600">Designed and developed websites using templates, ensuring client requirements and functionality standards were met. Managed project workflows, produced graphic and digital content, and supported marketing campaigns. Provided technical troubleshooting, maintained organized files and communications, and collaborated with the team for timely project delivery.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="dark-section py-20">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">My Skills</h2>
-                <div class="w-24 h-1 gradient-bg mx-auto rounded-full"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-               <!-- Frontend & Backend Skills -->
-                <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
-                    <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
-                            <i class="fas fa-code text-white text-xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold">Frontend & Backend</h3>
-                    </div>
-
-                    <div class="space-y-2">
-                        <div class="flex items-center gap-2">
-                            <i class="fab fa-html5 text-orange-400"></i>
-                            <span class="text-indigo-300">HTML</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fab fa-css3-alt text-blue-400"></i>
-                            <span class="text-indigo-300">CSS</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fab fa-css3-alt text-blue-400"></i>
-                            <span class="text-indigo-300">Tailwind CSS</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fab fa-js text-yellow-400"></i>
-                            <span class="text-indigo-300">JavaScript</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-code text-indigo-400"></i>
-                            <span class="text-indigo-300">jQuery</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-random text-indigo-400"></i>
-                            <span class="text-indigo-300">AJAX</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fab fa-php text-purple-400"></i>
-                            <span class="text-indigo-300">PHP</span>
-                        </div> 
-                        <div class="flex items-center gap-2">
-                            <i class="fab fa-java text-red-600"></i>
-                            <span class="text-indigo-300">Java</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tools Skills -->
-                <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
-                    <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
-                            <i class="fas fa-tools text-white text-xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold">DevOps & Developer Tools</h3>
-                    </div>
-
-                    <div class="space-y-2">
-                        <div class="flex items-center gap-2">
-                            <i class="fab fa-git-alt text-orange-400"></i>
-                            <span class="text-indigo-300">Git</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fab fa-docker text-blue-400"></i>
-                            <span class="text-indigo-300">Docker</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-code text-yellow-300"></i>
-                            <span class="text-indigo-300">Sublime Text</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-database text-pink-400"></i>
-                            <span class="text-indigo-300">phpMyAdmin</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-server text-green-400"></i>
-                            <span class="text-indigo-300">XAMPP / WAMP</span>
-                        </div>
-                    </div>
-                </div>
-
-             <!-- Hosting Skills -->
-            <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
-                <div class="flex items-center mb-6">
-                    <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
-                        <i class="fas fa-globe text-white text-xl"></i>
-                    </div> 
-                    <h3 class="text-2xl font-semibold">Hosting</h3>
-                </div>
-                
-                <div class="space-y-2">
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-building text-indigo-400"></i>
-                        <span class="text-indigo-300">GoDaddy</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-server text-indigo-400"></i>
-                        <span class="text-indigo-300">Hostinger</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-network-wired text-indigo-400"></i>
-                        <span class="text-indigo-300">DNS Management</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-cogs text-indigo-400"></i>
-                        <span class="text-indigo-300">cPanel / hPanel</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-lock text-indigo-400"></i>
-                        <span class="text-indigo-300">SSL & Security Settings</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-search text-indigo-400"></i>
-                        <span class="text-indigo-300">SEO Optimization</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-magic text-indigo-400"></i>
-                        <span class="text-indigo-300">1-Click Installers</span>
-                    </div>
-                </div>
-            </div>
-
-                <!-- Collaboration & Productivity Tools -->
-                <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
-                    <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
-                            <i class="fas fa-clipboard-list text-white text-xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold">Collaboration & Productivity Tools</h3>
-                    </div>
-
-                    <div class="space-y-2">
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-envelope text-indigo-400"></i>
-                            <span class="text-indigo-300">Email Management</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fab fa-trello text-indigo-400"></i>
-                            <span class="text-indigo-300">Trello</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fab fa-google text-indigo-400"></i>
-                            <span class="text-indigo-300">Google Workspace</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fab fa-slack text-indigo-400"></i>
-                            <span class="text-indigo-300">Slack</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-video text-indigo-400"></i>
-                            <span class="text-indigo-300">Zoom</span>
-                        </div> 
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-cloud text-indigo-400"></i>
-                            <span class="text-indigo-300">Google Drive</span>
-                        </div> 
-                    </div>
-                </div>  
-                <!-- Website Builders & CMS -->
-                <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
-                    <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
-                            <i class="fas fa-laptop-code text-white text-xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold">Website Builders & CMS</h3>
-                    </div>
-
-                    <div class="space-y-2">
-                        <div class="flex items-center gap-2">
-                            <i class="fab fa-wordpress text-blue-400"></i>
-                            <span class="text-indigo-300">WordPress</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-shopping-cart text-green-400"></i>
-                            <span class="text-indigo-300">WooCommerce</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                          <i class="fab fa-shopify text-green-400" aria-hidden="true"></i>
-                          <span class="text-indigo-300">Shopify</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-pencil-ruler text-pink-400"></i>
-                            <span class="text-indigo-300">Duda</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-store text-yellow-400"></i>
-                            <span class="text-indigo-300">Ecwid</span>
-                        </div>
-
-                        <!-- Website Product Listing -->
-                        <div class="flex items-center gap-2 mt-2">
-                            <i class="fas fa-box-open text-purple-400"></i>
-                            <span class="text-indigo-300">Website Product Listing</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Other Skills -->
-                <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
-                    <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
-                            <i class="fas fa-lightbulb text-white text-xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold">Other Skills</h3>  
-                    </div>
-
-                    <!-- Technical & Creative Skills -->
-                    <div class="space-y-2 mb-4"> 
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-mobile-alt text-yellow-400"></i>
-                            <span class="text-indigo-300">Responsive Design</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-robot text-green-400"></i>
-                            <span class="text-indigo-300">ChatGPT</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-tachometer-alt text-blue-400"></i>
-                            <span class="text-indigo-300">Performance Optimization</span>
-                        </div> 
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-paint-brush text-purple-400"></i>
-                            <span class="text-indigo-300">Canva</span>
-                        </div> 
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-image text-red-400"></i>
-                            <span class="text-indigo-300">Adobe Photoshop</span>
-                        </div>
-
-                    </div>
-
-                    <!-- Soft Skills with Icons -->
-                    <div class="space-y-2">
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-comments text-indigo-400"></i>
-                            <span class="text-indigo-300">Communication</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-puzzle-piece text-indigo-400"></i>
-                            <span class="text-indigo-300">Problem Solving</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-users text-indigo-400"></i>
-                            <span class="text-indigo-300">Team Collaboration</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-clock text-indigo-400"></i>
-                            <span class="text-indigo-300">Time Management</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-sync-alt text-indigo-400"></i>
-                            <span class="text-indigo-300">Adaptability</span>
-                        </div>
-                    </div>
-                </div> 
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="light-section py-20">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">My Projects</h2>
-                <div class="w-24 h-1 gradient-bg mx-auto rounded-full"></div>
-                <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
-                    Here are some of my recent projects. Each one represents different skills and challenges I've tackled.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition">
-                   <div class="h-48 bg-indigo-100 flex items-center justify-center">
-                        <img class="object-cover" width="80" src="https://raw.githubusercontent.com/MRoseBolito/my-portfolio/main/apekoplogo_wbg.png" alt="Apekop Logo" />
-                         <!--<svg class="w-24 h-24 text-indigo-500" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                            <polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
-                            <polyline points="7.5 19.79 7.5 14.6 3 12"></polyline>
-                            <polyline points="21 12 16.5 14.6 16.5 19.79"></polyline>
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                        </svg>-->
-                    </div> 
-                    <div class="p-6"> 
-                        <h3 class="text-xl font-semibold mb-2">E-Commerce Platform</h3>
-                        <p class="text-gray-500 italic mb-2">Apekop Travel and Tours</p>
-                        <p class="text-gray-600 mb-4">
-                            An ecommerce website built for Apekop Travel and Tours, allowing customers to conveniently book ferry tickets, island tours, and travel services online. The platform supports secure payments, trip schedules, and customer booking management.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">Ecwid E-Commerce Platform</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">Custom HTML & CSS</span> 
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">GoDaddy</span> 
-                        </div>
-                        <div class="flex justify-between">
-                            <a href="https://apekoptravelandtours.com" class="text-indigo-600 hover:text-indigo-800 font-medium" target="_blank" el="noopener noreferrer">
-                                Live Demo <i class="fas fa-external-link-alt ml-1" ></i>
-                            </a> 
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition">
-                    <div class="h-48 bg-indigo-100 flex items-center justify-center"> 
-                        <img class="object-cover" width="80" src="https://raw.githubusercontent.com/MRoseBolito/my-portfolio/main/apekoplogo_wbg.png" alt="Apekop Logo" />
-                         <!--<svg class="w-24 h-24 text-indigo-500" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                            <polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
-                            <polyline points="7.5 19.79 7.5 14.6 3 12"></polyline>
-                            <polyline points="21 12 16.5 14.6 16.5 19.79"></polyline>
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                        </svg>--> 
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold ">Walk-in Ticketing Management System</h3>
-                        <p class="text-gray-500 italic mb-2">Apekop Travel and Tours</p>
-                        <p class="text-gray-600 mb-4">
-                            A custom-built system designed for a shipping company to streamline and manage on-site ticket sales. The system allows staff to issue, update, and track tickets for walk-in passengers in real-time.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">HTML</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">Bootstrap</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">CSS</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">PHP</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">AJAX</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">jQuery</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">Hostinger</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">phpMyAdmin</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <p class="text-sm text-gray-500 italic">
-                                Live demo not available – company confidential project.
-                            </p> 
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition">
-                    <div class="h-48 bg-indigo-100 flex items-center justify-center">
-                        <img class="object-cover" width="80" src="https://raw.githubusercontent.com/MRoseBolito/my-portfolio/main/apekoplogo_wbg.png" alt="Apekop Logo" />
-                       <!-- <svg class="w-24 h-24 text-indigo-500" fill="currentColor" viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                            <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                            <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                        </svg>-->
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold ">Payroll Management System</h3>
-                        <p class="text-gray-500 italic mb-2">Apekop Travel and Tours</p>
-                        <p class="text-gray-600 mb-4">
-                            A streamlined payroll management tool built to automate employee salary calculations, generate payslips, and manage attendance and deductions. Designed to simplify payroll processes and reduce manual errors for accounting departments.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">HTML</span> 
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">CSS</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">Bootstrap</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">PHP</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">jQuery</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">AJAX</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">Hostinger</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">phpMyAdmin</span>
-                        </div>
-                        </div>
-                        <div class="flex justify-between">
-                            <p class="text-sm text-gray-500 italic">
-                                Live demo not available – company confidential project.
-                            </p> 
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 4 --> 
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition">
-                    <div class="h-48 bg-indigo-100 flex items-center justify-center">
-                        <svg class="w-24 h-24 text-indigo-500" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M4 4h16v16H4z"></path>
-                        </svg>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Business Website (Freelance Remote)</h3>
-                        <p class="text-gray-500 italic mb-2">Client: International Business (Freelance Work)</p>
-                        <p class="text-gray-600 mb-4">
-                            Collaborated on a WordPress site using Elementor to design key pages, customize layouts, and optimize performance. Worked closely with the client to match their branding and improve user flow.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">WordPress</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">Elementor</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">WooCommerce</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">Custom CSS</span> 
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">cPanel</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <p class="text-sm text-gray-500 italic">
-                                Live demo not available – freelance project for a private client.
-                            </p>
-                        </div>
-                    </div>
-                </div> 
-                <!-- Project 5 -->
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition">
-                    <div class="h-48 bg-indigo-100 flex items-center justify-center">
-                        <i class="fas fa-laptop-code text-indigo-500 text-5xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Client Websites for Digital Agency (Freelance Remote)</h3>
-                        <p class="text-gray-500 italic mb-2">Client: International Business (Freelance Work)</p>
-                        <p class="text-gray-600 mb-4">
-                            Worked as a freelance web developer for a digital agency, building custom websites using the Duda platform for a variety of clients. Collaborated with designers and project managers to ensure brand consistency and responsive design across devices.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">Duda Platform</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">Team Collaboration</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">Web Design</span>
-                        </div>
-                        <p class="text-sm italic text-gray-400">This project is protected by NDA / company policy.</p>
-                    </div>
-                </div> 
-                <!-- Project 6 -->
-               <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition">
-                    <div class="h-48 bg-indigo-100 flex items-center justify-center">
-                        <i class="fas fa-paint-brush text-indigo-500 text-5xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Graphic Design Projects</h3>
-                        <p class="text-gray-600 mb-4">
-                            Created a range of visual assets for Apekop Travel and various freelance clients. Projects included logo design, flyers, banners, social media posts, business cards, and other marketing materials for both print and digital use.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">Canva</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">Adobe Photoshop</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">Logo Design</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">Marketing Materials</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 text-sm rounded-full">Social Media</span>
-                        </div>
-                        <p class="text-sm italic text-gray-400">Design previews available upon request due to client confidentiality.</p>
-                    </div>
-                </div> 
-            </div> 
-        </div>
-    </section> 
-    <!-- Contact Section -->
-    <section id="contact" class="dark-section py-20">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
-                <div class="w-24 h-1 gradient-bg mx-auto rounded-full"></div>
-                <p class="text-lg text-gray-300 mt-4 max-w-2xl mx-auto">
-                    Have a project in mind or want to collaborate? Feel free to reach out!
-                </p>
-            </div> 
-            <div class="flex flex-col md:flex-row gap-12"> 
-                <div class="w-full">
-                    <div class="bg-gray-800 rounded-xl p-8 shadow-lg h-full">
-                        <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-center">
-                                <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4 flex-shrink-0">
-                                    <i class="fas fa-envelope text-white text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-medium text-gray-300">Email</h4>
-                                    <a href="mailto:mrose.bolito28@gmail.com" class="text-indigo-400 hover:text-indigo-300 transition">mrose.bolito28@gmail.com</a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-center">
-                                <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4 flex-shrink-0">
-                                    <i class="fas fa-phone text-white text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-medium text-gray-300">Phone</h4>
-                                    <a href="tel:+63 910 878 7677 " class="text-indigo-400 hover:text-indigo-300 transition">+63 910 878 7677 (Available in WhatsApp)</a>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4 flex-shrink-0">
-                                    <i class="fab fa-linkedin text-white text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-medium text-gray-300">LinkedIn</h4>
-                                    <a href="https://www.linkedin.com/in/mary-rose-bolito-a5a23920b/" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition">
-                                        linkedin.com/in/mary-rose-bolito-a5a23920b
-                                    </a>
-                                </div>
-                            </div> 
-                            <div class="flex items-center">
-                                <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4 flex-shrink-0">
-                                    <i class="fas fa-map-marker-alt text-white text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-medium text-gray-300">Location</h4>
-                                    <p class="text-gray-400">Bohol, Philippines</p>
-                                </div>
-                            </div>
-                        </div> 
-                    </div>
-                </div> 
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <a href="#" class="text-xl font-bold text-gradient">Rose Dev</a>
-                </div>
-                
-                <!--<div class="flex space-x-6 mb-4 md:mb-0">
-                    <a href="#home" class="hover:text-indigo-400 transition">Home</a>
-                    <a href="#about" class="hover:text-indigo-400 transition">About</a>
-                    <a href="#skills" class="hover:text-indigo-400 transition">Skills</a>
-                    <a href="#projects" class="hover:text-indigo-400 transition">Projects</a>
-                    <a href="#contact" class="hover:text-indigo-400 transition">Contact</a>
-                </div>-->
-                
-                <div class="text-center">
-                    <p>&copy; 2025 Rose Dev. All rights reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 rounded-full gradient-bg text-white flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300">
-        <i class="fas fa-arrow-up"></i>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
     </button>
+  </div>
+</header>
 
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Close mobile menu when clicking a link
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-        
-        // Back to Top Button
-        const backToTopButton = document.getElementById('back-to-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.remove('opacity-0', 'invisible');
-                backToTopButton.classList.add('opacity-100', 'visible');
-            } else {
-                backToTopButton.classList.remove('opacity-100', 'visible');
-                backToTopButton.classList.add('opacity-0', 'invisible');
-            }
-        });
-        
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70, // Adjust for fixed header
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9639792d078ab9f3',t:'MTc1MzI1NTgzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow">CMS &amp; Ecommerce Solutions Specialist</p>
+      <h1>Hi, I'm <span class="accent-text">Rose</span></h1>
+      <h2>Web Developer building CMS &amp; Ecommerce platforms that work as hard as you do</h2>
+      <p class="hero-lede">
+        8 years turning business requirements into fast, reliable, user‑friendly websites —
+        from WordPress and Shopify builds to custom ecommerce and booking platforms. I build it,
+        launch it, and keep it running.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="assets/Mary_Rose_Bolito_Resume.pdf" class="btn btn-outline" download>Download Résumé</a>
+        <a href="#contact" class="btn btn-text">Contact Me →</a>
+      </div>
+      <ul class="hero-stats">
+        <li><strong>8</strong><span>Years experience</span></li>
+        <li><strong>10+</strong><span>Platforms &amp; CMS tools</span></li>
+        <li><strong>3</strong><span>Industries served</span></li>
+      </ul>
+    </div>
+    <div class="hero-figure">
+      <div class="hero-photo-ring">
+        <img src="assets/rose-photo.png" alt="Portrait of Mary Rose Bolito" class="hero-photo" onerror="this.parentElement.classList.add('no-photo')" />
+        <div class="photo-fallback" aria-hidden="true">RB</div>
+      </div>
+      <div class="hero-chip chip-1">WordPress</div>
+      <div class="hero-chip chip-2">Shopify</div>
+      <div class="hero-chip chip-3">Webflow</div>
+    </div>
+  </div>
+  <a href="#about" class="scroll-cue" aria-label="Scroll to About">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <p class="section-eyebrow">Get to know me</p>
+    <h2 class="section-title">About Me</h2>
+
+    <div class="about-grid">
+      <div class="about-card">
+        <p>
+          I'm a Web Developer with <strong>8 years of experience</strong> building and maintaining
+          websites, ecommerce platforms, and digital solutions for businesses across different
+          industries. My core strength is <strong>CMS and ecommerce development</strong> —
+          WordPress, Shopify, Webflow, WooCommerce, and Ecwid — paired with solid frontend
+          fundamentals and a genuine eye for usability.
+        </p>
+        <p>
+          Beyond writing code, I've supervised operations, coordinated project timelines, and
+          worked directly with clients and cross-functional teams to scope, build, and ship
+          reliable digital solutions. That combination means I don't just implement a request —
+          I understand the business behind it.
+        </p>
+        <p>
+          I'm currently looking for a <strong>CMS Developer</strong> or
+          <strong>Ecommerce Developer</strong> role where I can bring that same ownership — from
+          planning through launch to long-term maintenance — to a team building products people
+          actually use.
+        </p>
+
+        <div class="expertise-tags">
+          <span>WordPress Development</span>
+          <span>Ecommerce Development</span>
+          <span>WooCommerce &amp; Shopify</span>
+          <span>Webflow &amp; CMS Management</span>
+          <span>Responsive Web Design</span>
+          <span>SEO Optimization</span>
+          <span>Website Maintenance &amp; Support</span>
+          <span>UX/UI Principles</span>
+          <span>Client Communication</span>
+          <span>Process Improvement</span>
+        </div>
+
+        <div class="education-line">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22 10L12 5 2 10l10 5 10-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5" stroke="currentColor" stroke-width="1.6"/></svg>
+          <div>
+            <strong>BS in Information Technology</strong> — Bohol Island State University, Balilihan Campus
+            <span class="edu-years">2013 – 2018</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <h3>My Journey</h3>
+
+        <div class="timeline-item">
+          <span class="timeline-dot"></span>
+          <p class="timeline-date">2025 – Present</p>
+          <h4>Senior Web Developer &amp; Marketing Support</h4>
+          <p class="timeline-company">Invisible Design Services</p>
+          <ul>
+            <li>Lead planning, development, and optimization of client websites focused on usability, responsiveness, and SEO performance.</li>
+            <li>Collaborate with leadership and cross-functional teams to define project scope, timelines, and technical requirements.</li>
+            <li>Support ongoing maintenance, troubleshooting, and improvements across multiple client projects.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-dot"></span>
+          <p class="timeline-date">2024 – 2025</p>
+          <h4>Web Developer | Operations Supervisor</h4>
+          <p class="timeline-company">Apekop Travel and Tours</p>
+          <ul>
+            <li>Managed website updates, operational workflows, and digital support for daily business operations.</li>
+            <li>Developed and maintained systems and web solutions supporting ticketing and operational processes.</li>
+            <li>Coordinated with partners and customers while supporting revenue-related initiatives.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-dot"></span>
+          <p class="timeline-date">2018 – 2024</p>
+          <h4>Web &amp; Software Developer</h4>
+          <p class="timeline-company">Incramind Development Inc.</p>
+          <ul>
+            <li>Developed and maintained websites, ecommerce platforms, and web applications for various client projects.</li>
+            <li>Built responsive, user-friendly features using frontend technologies and CMS platforms.</li>
+            <li>Performed testing, debugging, and technical support to maintain system performance and stability.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="section-inner">
+    <p class="section-eyebrow section-eyebrow--light">Tools of the trade</p>
+    <h2 class="section-title section-title--light">My Skills</h2>
+
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <div class="skill-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Frontend &amp; Development</h3>
+        <ul>
+          <li>HTML &amp; CSS</li>
+          <li>JavaScript</li>
+          <li>Bootstrap</li>
+          <li>PHP</li>
+          <li>JSON</li>
+          <li>Git</li>
+          <li>Docker</li>
+        </ul>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 21h8M12 18v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>CMS &amp; Ecommerce Platforms</h3>
+        <ul>
+          <li>WordPress &amp; Elementor</li>
+          <li>Custom Post Types &amp; ACF</li>
+          <li>WooCommerce</li>
+          <li>Shopify</li>
+          <li>Webflow</li>
+          <li>Ecwid</li>
+          <li>Duda</li>
+        </ul>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.9 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.9-3.8-9s1.3-6.4 3.8-9Z" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <h3>Hosting &amp; Website Management</h3>
+        <ul>
+          <li>GoDaddy</li>
+          <li>Hostinger</li>
+          <li>cPanel</li>
+          <li>Cloudflare</li>
+          <li>HostArmada</li>
+          <li>DNS Management</li>
+        </ul>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.4 5.5L20 9l-4.4 3.8L17 19l-5-3.2L7 19l1.4-6.2L4 9l5.6-.5L12 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Design &amp; Marketing</h3>
+        <ul>
+          <li>Canva</li>
+          <li>Adobe Photoshop</li>
+          <li>SEO — Yoast, SEOPress, SiteSEO</li>
+          <li>Google Ads (basic)</li>
+          <li>Facebook Ads (basic)</li>
+        </ul>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.4 8.4 0 0 1-8.4 8.4H3l2.4-2.4A8.4 8.4 0 1 1 21 11.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Collaboration &amp; Productivity</h3>
+        <ul>
+          <li>Google Workspace</li>
+          <li>Trello &amp; Jira</li>
+          <li>Slack &amp; ClickUp</li>
+          <li>Zoom, Telegram, WhatsApp</li>
+          <li>ChatGPT &amp; Claude</li>
+        </ul>
+      </div>
+
+      <div class="skill-card skill-card--highlight">
+        <div class="skill-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Core Strengths</h3>
+        <ul>
+          <li>Website Optimization</li>
+          <li>Responsive Web Design</li>
+          <li>UX/UI Principles</li>
+          <li>Project Coordination</li>
+          <li>Technical Troubleshooting</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="section-inner">
+    <p class="section-eyebrow">Selected work</p>
+    <h2 class="section-title">My Projects</h2>
+    <p class="section-sub">A mix of agency, employment, and freelance work spanning CMS builds, custom platforms, and ecommerce systems.</p>
+
+    <div class="projects-grid">
+
+      <article class="project-card">
+        <div class="project-thumb thumb-1"><span>ITP</span></div>
+        <div class="project-body">
+          <h3>International Trade &amp; Investment Platform</h3>
+          <p class="project-role">Agency Project · Main Developer</p>
+          <p>Led development of a business-focused platform promoting international trade, investment opportunities, and strategic partnerships.</p>
+          <div class="tags">
+            <span>WordPress</span><span>Elementor</span><span>SEO</span>
+          </div>
+          <p class="project-note">Agency project under confidentiality agreement — client name withheld; happy to walk through details directly.</p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-thumb thumb-2"><span>CDP</span></div>
+        <div class="project-body">
+          <h3>Community Directory &amp; Content Platform</h3>
+          <p class="project-role">Agency Project · Lead Developer</p>
+          <p>Led development of a scalable business directory and content platform focused on usability, accessibility, and efficient content management.</p>
+          <div class="tags">
+            <span>WordPress</span><span>Custom Post Types</span><span>ACF</span>
+          </div>
+          <p class="project-note">Agency project under confidentiality agreement — client name withheld; happy to walk through details directly.</p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-thumb thumb-3"><span>ECP</span></div>
+        <div class="project-body">
+          <h3>E-Commerce Platform</h3>
+          <p class="project-role">Apekop Travel and Tours</p>
+          <p>Built an ecommerce website enabling customers to book ferry tickets, island tours, and travel services online, with secure payments, trip scheduling, and booking management.</p>
+          <div class="tags">
+            <span>Ecwid</span><span>Custom HTML &amp; CSS</span><span>GoDaddy</span>
+          </div>
+          <a href="#" class="project-link">Live Demo <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M7 7h10v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-thumb thumb-4"><span>WTS</span></div>
+        <div class="project-body">
+          <h3>Walk-in Ticketing Management System</h3>
+          <p class="project-role">Apekop Travel and Tours</p>
+          <p>Custom-built system for a shipping company to digitize walk-in ticket sales, letting staff issue, update, and track tickets in real time.</p>
+          <div class="tags">
+            <span>PHP</span><span>Bootstrap</span><span>AJAX</span><span>jQuery</span>
+          </div>
+          <p class="project-note">Live demo unavailable — company confidential project.</p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-thumb thumb-5"><span>PMS</span></div>
+        <div class="project-body">
+          <h3>Payroll Management System</h3>
+          <p class="project-role">Apekop Travel and Tours</p>
+          <p>Streamlined payroll tool automating salary calculations, payslip generation, and attendance and deduction tracking for the finance team.</p>
+          <div class="tags">
+            <span>PHP</span><span>Bootstrap</span><span>AJAX</span><span>phpMyAdmin</span>
+          </div>
+          <p class="project-note">Live demo unavailable — company confidential project.</p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-thumb thumb-6"><span>BWD</span></div>
+        <div class="project-body">
+          <h3>Business Website (Freelance)</h3>
+          <p class="project-role">Client: International Business</p>
+          <p>Built key pages on WordPress using Elementor, customizing layout and performance while working closely with the client to match their brand.</p>
+          <div class="tags">
+            <span>WordPress</span><span>Elementor</span><span>WooCommerce</span>
+          </div>
+          <p class="project-note">Live demo unavailable — freelance project for a private client.</p>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="projects-footnote">
+      Also worked on: custom client websites for a digital agency on the Duda platform, and a
+      range of graphic design collateral (logos, social media, print) for Apekop Travel and
+      other clients — happy to share more on request.
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <p class="section-eyebrow section-eyebrow--light">Let's work together</p>
+    <h2 class="section-title section-title--light">Get In Touch</h2>
+    <p class="contact-sub">Open to CMS Developer and Ecommerce Developer roles — feel free to reach out or connect.</p>
+
+    <div class="contact-card">
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <p class="contact-label">Email</p>
+          <a href="mailto:mrose.bolito28@gmail.com">mrose.bolito28@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <p class="contact-label">Phone</p>
+          <a href="tel:+639108787677">+63 910 878 7677</a>
+          <span class="contact-note">Available on WhatsApp</span>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="2"/><circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="2"/><path d="M10 21v-8a4 4 0 0 1 8 0v8M14 13v8" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <div>
+          <p class="contact-label">LinkedIn</p>
+          <a href="https://linkedin.com/in/mary-rose-bolito-a5a23920b" target="_blank" rel="noopener">linkedin.com/in/mary-rose-bolito-a5a23920b</a>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <div>
+          <p class="contact-label">Location</p>
+          <span>Bohol, Philippines</span>
+        </div>
+      </div>
+
+      <a href="assets/Mary_Rose_Bolito_Resume.pdf" class="btn btn-primary contact-resume" download>Download Résumé</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="section-inner footer-inner">
+    <span class="brand">Rose<span>.dev</span></span>
+    <p>&copy; <span id="year"></span> Mary Rose Bolito. All rights reserved.</p>
+    <a href="#top" class="footer-top" aria-label="Back to top">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 15l-6-6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
 </html>
